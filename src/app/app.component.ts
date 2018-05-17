@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PeopleService } from './people/people.service';
 import { TabsComponent } from './tabs/tabs.component';
 
@@ -8,9 +8,10 @@ import { TabsComponent } from './tabs/tabs.component';
     <h1>Angular tabs</h1>
     <ngx-tabs>
       <ngx-tab tabTitle="People List">
-        <app-people-list [people]="people" (addPerson)="onAddPerson()"></app-people-list>
+        <app-people-list [people]="people"
+          (addPerson)="onAddPerson()"></app-people-list>
       </ngx-tab>
-      <ngx-tab tabTitle="Tab 2" [template]="personEdit" [dataContext]="people[0]"></ngx-tab>
+
     </ngx-tabs>
 
     <ng-template let-person="data" #personEdit>
@@ -18,9 +19,9 @@ import { TabsComponent } from './tabs/tabs.component';
     </ng-template>
   `
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
   @ViewChild('personEdit') personEditTemplate;
-  @ViewChild(TabsComponent) tabsComponent;
+  @ViewChild(TabsComponent) tabsComponent: TabsComponent;
   people;
 
   constructor(private peopleService: PeopleService) {}
@@ -31,11 +32,11 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit() {
-    console.log(this.personEditTemplate);
-  }
-
   onAddPerson() {
-    this.tabsComponent.openTab();
+    this.tabsComponent.openTab(
+      'Dynamic tab',
+      this.personEditTemplate,
+      this.people[0]
+    );
   }
 }

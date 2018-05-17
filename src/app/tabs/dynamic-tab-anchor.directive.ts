@@ -1,7 +1,7 @@
 import { Directive, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[appDynamicTabAnchor]'
+  selector: '[dynamicTabAnchor]'
 })
 export class DynamicTabAnchorDirective {
   constructor(public viewContainer: ViewContainerRef) {}
