@@ -14,7 +14,7 @@ import { Component, Input } from '@angular/core';
       <ng-content></ng-content>
       <ng-container *ngIf="template"
         [ngTemplateOutlet]="template"
-        [ngTemplateOutletContext]="{data: dataContext}">
+        [ngTemplateOutletContext]="{person: dataContext}">
       </ng-container>
     </div>
   `
@@ -24,4 +24,5 @@ export class TabComponent {
   @Input() active = false;
   @Input() template;
   @Input() dataContext;
+  @Input() isCloseable = false;
 }
