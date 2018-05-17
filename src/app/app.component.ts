@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { PeopleService } from './people/people.service';
 
 @Component({
@@ -12,9 +12,14 @@ import { PeopleService } from './people/people.service';
       <ngx-tab tabTitle="Tab 2">Tab 2 Content</ngx-tab>
     </ngx-tabs>
 
+    <ng-template #personEdit>
+      Hi, I am a static template defined within the template
+      of another component.
+    </ng-template>
   `
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
+  @ViewChild('personEdit') personEditTemplate;
   people;
 
   constructor(private peopleService: PeopleService) {}
@@ -23,5 +28,9 @@ export class AppComponent implements OnInit {
     this.peopleService.getPeople().subscribe(data => {
       this.people = data;
     });
+  }
+
+  ngAfterViewInit() {
+    console.log(this.personEditTemplate);
   }
 }
