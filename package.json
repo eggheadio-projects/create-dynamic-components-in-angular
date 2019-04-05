@@ -1,0 +1,8 @@
+{
+  "slug": "create-dynamic-components-in-angular",
+  "private": true,
+  "repository": "https://github.com/eggheadio-projects/create-dynamic-components-in-angular",
+  "workspaces": [
+    "lessons/*"
+  ],
+}
