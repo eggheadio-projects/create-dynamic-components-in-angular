@@ -8,6 +8,7 @@ All notable changes to "Create Dynamic Components in Angular” will be document
 
 - Added this file.
 - Added individual lessons as folders to be included under the master branch.
+- Added support for yarn.
 
 ### Changed
 
